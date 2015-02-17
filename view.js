@@ -1,4 +1,4 @@
-function view() {
+function My317View() {
     var openNav = true,
             addMouseAndTouchUp = function(elementID, handler) {
                 //utility function to add both mouseup and touchend events and prevent double events
