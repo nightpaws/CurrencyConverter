@@ -1,0 +1,130 @@
+* {
+    margin: 0;
+
+}
+html, body {
+    height: 100%;
+    font-family: sans-serif;
+    font-size: 3vh;
+    -webkit-user-select: none;
+    -moz-user-select: -moz-none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#mainsection h1{
+    margin-bottom: 0.6rem;
+}
+#mainsection p{
+    margin-bottom: 0.5rem;
+}
+
+header {
+    background-color:black;
+    color:white;
+    text-align:center;
+    padding:0.2em; 
+    font-size: 1.1rem;
+    height: 1.3rem;
+}
+nav {
+    background-color:#eeeeee;
+    padding: 0.3rem;
+    width:20%;
+    float:left;
+    font-size: 0.8rem;
+    height: calc(100% - 3.5rem);
+}
+nav.closedmenu{
+    width:40px
+}
+section.closedmenu{
+    margin-left: calc(40px + 10px);
+}
+p.navMenuItem{
+    margin: 0.2rem;
+    /*font-size: 1rem;*/
+    padding: 0.5rem;
+    background: silver;
+    /*font-weight: bold;*/
+    text-align: center;
+    /*cursor: pointer;*/
+}
+section{
+    margin-left: calc(20% + 10px);
+    padding: 0.3rem;
+    font-size: 0.8rem;
+    min-height: calc(100% - 3.5rem);
+    height: calc(100% - 3.5rem);
+    background: lightyellow;
+    overflow:auto;
+}
+section.popup {
+    display: none;
+    width:100vw;
+    height:100vh;
+    background:rgba(105,100,100,0.8);
+    position: absolute;
+    top:0px;
+    left:0px;
+    margin-left:0px;
+}
+.popupcontent{
+    padding: 5vmin;
+    position: absolute;
+    top: 10vmin;
+    left: 50vw;
+    margin-left: -35vmin; /*half-width + padding*/
+    background: lightgray;
+    width: 60vmin;
+}
+.main{
+    padding: 1vmin;
+    overflow: hidden;
+}
+footer {
+    background-color:black;
+    color:white;
+    clear:both;
+    text-align:center;
+    padding:0.2em; 
+    font-size: 0.7rem;
+    height: 0.9rem;
+}
+#popupAbout P{
+    padding: 0.5rem;
+}
+
+#outputScreen {
+    width: 100%;
+    height: 20%;
+    background-color: gray;
+    display: table;
+    text-align: right;
+    font-weight: bolder;
+    font-size: xx-large;
+    margin-bottom: 5px;
+}
+
+#outputScreen p{
+    display: table-cell;
+    vertical-align: bottom;
+    padding-right: 10px;
+}
+
+button{
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    color: white;
+    background-color: darkgray;
+    font-size: xx-large;
+    font-weight: bold;
+}
+
+table{
+    width: 100%;
+    height: 80%;
+    border: 0px;
+}
+
