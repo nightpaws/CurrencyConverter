@@ -5,8 +5,8 @@ function rateView() {
 
     var menu = document.getElementById("menu");
 
-    var mainDisplay = document.getElementById("mainDisplay"),
-        secDisplay = document.getElementById("secDisplay");
+    var mainDisplay = document.getElementById("outputScreen"),
+        secDisplay = document.getElementById("outputScreen2");
 
     this.updateMainDisplay = function(value) {
         mainDisplay.innerHTML = value;
