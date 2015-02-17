@@ -19,7 +19,11 @@
         <script src="js/model.js"></script>
         <script src="js/view.js"></script>
         <script src="js/controller.js"></script>
-		<script src="js/converter.js"></script>
+		<!--<script src="js/converter.js"></script>-->
+		<script src="js/rateModel.js"></script>
+		<script src="js/rateView.js"></script>
+		<script src="js/rateController.js"></script>
+		<script src="js/rates.js"></script>
     </head>
     <body>
         <header>
@@ -39,24 +43,24 @@
             </div>
             <table id="conv">
                 <tr>
-                    <td><button value="1">1</button></td>
-                    <td><button value="2">2</button></td>
-                    <td><button value="3">3</button></td>
+                    <td><button class="number">1</button></td>
+                    <td><button class="number">2</button></td>
+                    <td><button class="number">3</button></td>
                 </tr>
                 <tr>
-                    <td><button value="4">4</button></td>
-                    <td><button value="5">5</button></td>
-                    <td><button value="6">6</button></td>
+                    <td><button class="number">4</button></td>
+                    <td><button class="number">5</button></td>
+                    <td><button class="number">6</button></td>
                 </tr>
                 <tr>
-                    <td><button value="7">7</button></td>
-                    <td><button value="8">8</button></td>
-                    <td><button value="9">9</button></td>
+                    <td><button class="number">7</button></td>
+                    <td><button class="number">8</button></td>
+                    <td><button class="number">9</button></td>
                 </tr>
                 <tr>
-                    <td><button value="c">C</button></td>
-                    <td><button value="0">0</button></td>
-                    <td><button value="=">=</button></td>
+                    <td><button class="clear">C</button></td>
+                    <td><button class="number">0</button></td>
+                    <td><button class="equals">=</button></td>
                 </tr>
             </table>
         </section>
