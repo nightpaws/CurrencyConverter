@@ -25,43 +25,42 @@
         <img src="images/menu.png" alt="Show" width="32" height="32"/>
       </p>
       <div id="navelem">
-        <p class="navMenuItem" id="navMenuConvFrom">
-          Convert From
-        </p>
-        <div class="slider" id="slideConvFrom">
+      
+        <p class="navMenuItem" id="navMenuConvFrom">Convert From</p>
+        <div class="slide" id="slideConvFrom">
           <div class="slidecontent">
             <!--Convert From Goes Here-->
-            <h1>Select a currency to convert from:</h1>
-          </br>
+            <h1>Select:</h1>
           <select id="homeCurr">
 			<option value="GBP">GBP</option>
             <option value="EUR">EUR</option>
             <option value="USD">USD</option>
             <option value="JPY">JPY</option>
           </select>
+          </br></br></br>
         </div>
       </div>
-      <p class="navMenuItem" id="navMenuConvTo">
-        Convert To
-      </p>
+ 
+      <p class="navMenuItem" id="navMenuConvTo">Convert To</p>
       <div class="slide" id="slideConvTo">
         <div class="slidecontent">
-          <h1>
-            Select a currency to convert to:
-          </h1>
-            </br>
+		  <!--Convert To Goes Here-->
+          <h1>Select:</h1>
           <select id="destCurr">
             <option value="EUR">EUR</option>
             <option value="GBP">GBP</option>
 			<option value="USD">USD</option>
             <option value="JPY">JPY</option>
           </select>
-        </br>
+          </br></br></br>
       </div>
     </div>
+  
     <p class="navMenuItem" id="navMenuAbout">
       About
     </p>
+    
+    
   </div>
 </nav>
 <section id="mainsection" class="closedmenu">
@@ -71,70 +70,70 @@
   <table id="conv">
     <tr>
       <td>
-        <div class="round-button" onclick="addToScreen(1)">
+        <button onclick="addToScreen(1)">
           1
-        </div>
+        </button>
       </td>
       <td>
-        <div class="round-button" onclick="addToScreen(2)">
+        <button onclick="addToScreen(2)">
           2
-        </div>
+        </button>
       </td>
       <td>
-        <div class="round-button" onclick="addToScreen(3)">
+        <button onclick="addToScreen(3)">
           3
-        </div>
+        </button>
       </td>
     </tr>
     <tr>
       <td>
-        <div class="round-button" onclick="addToScreen(4)">
+        <button onclick="addToScreen(4)">
           4
-        </div>
+        </button>
       </td>
       <td>
-        <div class="round-button" onclick="addToScreen(5)">
+        <button onclick="addToScreen(5)">
           5
-        </div>
+        </button>
       </td>
       <td>
-        <div class="round-button" onclick="addToScreen(6)">
+        <button onclick="addToScreen(6)">
           6
-        </div>
+        </button>
       </td>
     </tr>
     <tr>
       <td>
-        <div class="round-button" onclick="addToScreen(7)">
+        <button onclick="addToScreen(7)">
           7
-        </div>
+        </button>
       </td>
       <td>
-        <div class="round-button" onclick="addToScreen(8)">
+        <button onclick="addToScreen(8)">
           8
-        </div>
+        </button>
       </td>
       <td>
-        <div class="round-button" onclick="addToScreen(9)">
+        <button onclick="addToScreen(9)">
           9
-        </div>
+        </button>
       </td>
     </tr>
     <tr>
       <td>
-        <div class="round-button" onclick="clearOutputScreen()">
+        <button onclick="clearOutputScreen()">
           C
-        </div>
+        </button>
       </td>
       <td>
-        <div class="round-button" onclick="addToScreen(0)">
+        <button onclick="addToScreen(0)">
           0
-        </div>
+        </button>
       </td>
       <td>
-        <div class="round-button" onclick="equals()">
+        <button onclick="equals()">
           =
-        </div>
+        </button>
       </td>
     </tr>
   </table>
