@@ -1,3 +1,13 @@
+/*jslint node: true, browser: true */
+
+"use strict";
+
+/* 
+ * The My317View handles the side menu and the about box within the view
+ * It also handles callback registration for other menu items which the 
+ * controller then decides how to action.
+ */
+
 function My317View() {
     var openNav = true,
             addMouseAndTouchUp = function(elementID, handler) {
@@ -41,24 +51,24 @@ function My317View() {
             },
             showConvFrom = function() {
                 //handle showing about box purely within the view as their's no model involved
-                document.getElementById("popupConvFrom").style.display = "block";
+                document.getElementById("slideConvFrom").style.display = "block";
                 history.pushState(null, null, "#ConvFrom");
             },
             hideConvFrom = function() {
                 //handle hiding about box purely within the view
-                document.getElementById("popupConvFrom").style.display = "none";
+                document.getElementById("slideConvFrom").style.display = "none";
                 if (openNav) {
                     openCloseNav();
                 }
             },
             showConvTo = function() {
                 //handle showing about box purely within the view as their's no model involved
-                document.getElementById("popupConvTo").style.display = "block";
+                document.getElementById("slideConvTo").style.display = "block";
                 history.pushState(null, null, "#ConvTo");
             },
             hideConvTo = function() {
                 //handle hiding about box purely within the view
-                document.getElementById("popupConvTo").style.display = "none";
+                document.getElementById("slideConvTo").style.display = "none";
                 if (openNav) {
                     openCloseNav();
                 }
