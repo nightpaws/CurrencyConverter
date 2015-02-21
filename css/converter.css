@@ -163,3 +163,7 @@ button:active {
  color: gray;
  background-color: lightgray;
 }
+
+select {
+ font-size: large;
+}
