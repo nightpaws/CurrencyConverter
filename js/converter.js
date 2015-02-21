@@ -28,11 +28,12 @@ clearOutputScreen();
 
 
 function equals() {
-    var total, rate;
+    var total, rate, conversionTotal;
     rate = rateLookup();
     total = parseFloat(document.getElementById("conVal").textContent);
     total = total * rate;
-    document.getElementById("conVal").textContent = parseInt(total);
+    conversionTotal = conversionFee(total);
+    document.getElementById("conVal").textContent = parseInt(conversionTotal);
     document.getElementById('conCurr').textContent = document.getElementById('destCurr').value;
 }
 
@@ -129,11 +130,18 @@ function rateLookup() {
 
 
 /*Apply a conversion fee to the transaction */
-function conversionFee() {
-    var total;
-    total = document.getElementById("conVal").textContent;
-    total = total * 0.94;
-    document.getElementById("conVal").textContent = total;
+function conversionFee(total) {
+    var cut;
+    var finaltot;
+    cut = document.getElementById('bankCut').value;
+    if (cut!=='0'){
+    finaltot = (parseFloat(total)/100) * (100-parseFloat(cut));
+    }
+    else{
+    finaltot = total;
+    }
+//     document.getElementById("conVal").textContent = finaltot;
+    return finaltot;
 }
 
 function updateHomeCurr(curr){
