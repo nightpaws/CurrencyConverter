@@ -2,15 +2,18 @@
 "use strict";
 
 /*Converter 'memory' for holding user Input+ output*/
-var outbar = document.getElementById("conVal");
-
+var outbar;
+outbar = document.getElementById("conVal");
 
 /* button functions from On Screen Keypad */
 function clearOutputScreen() {
     document.getElementById("conVal").textContent = '0';
 }
 
-function addToScreen(no) {
+function addToScreen(no){
+    if (isNaN(document.getElementById("conVal").textContent)) {
+        clearOutputScreen();
+    }
     if (document.getElementById("conVal").textContent == '0') {
         outbar.textContent = no;
     } else {
@@ -18,11 +21,13 @@ function addToScreen(no) {
     }
 }
 
+
 function equals() {
-    var rate = rateLookup();
-    var total = parseFloat(document.getElementById("conVal").textContent);
+    var total, rate;
+    rate = rateLookup();
+    total = parseFloat(document.getElementById("conVal").textContent);
     total = total * rate;
-    document.getElementById("conVal").textContent = total;
+    document.getElementById("conVal").textContent = parseInt(total) + document.getElementById('destCurr').value;
 }
 
 /*Helper Functions for equals */
@@ -31,20 +36,22 @@ function equals() {
 
 function rateLookup() {
     var rate;
+
+    /*Nested Case to handle both selection boxes */
     switch (document.getElementById('homeCurr').value) {
         case "EUR":
             switch (document.getElementById('destCurr').value) {
                 case "GBP":
-                    rate = 0.8;
-                    break;
-                case "EUR":
-                    rate = 1.34;
+                    rate = 0.75;
                     break;
                 case "USD":
-                    rate = 1.53;
+                    rate = 1.64;
+                    break;
+                case "EUR":
+                    rate = 1.0;
                     break;
                 case "JPY":
-                    rate = 182.96;
+                    rate = 193.99;
                     break;
                 default:
                     rate = 1;
@@ -54,53 +61,62 @@ function rateLookup() {
         case "EUR":
             switch (document.getElementById('destCurr').value) {
                 case "GBP":
-                    rate = 0.74;
+                    rate = 0.73;
+                    break;
+                case "USD":
+                    rate = 1.10;
                     break;
                 case "EUR":
                     rate = 1;
                     break;
-                case "USD":
-                    rate = 1.14;
-                    break;
                 case "JPY":
-                    rate = 136.04;
+                    rate = 134.20;
+                    break;
+                default:
+                    rate = 1;
                     break;
             }
             break;
         case "USD":
             switch (document.getElementById('destCurr').value) {
                 case "GBP":
-                    rate = 0.65;
-                    break;
-                case "EUR":
-                    rate = 0.88;
+                    rate = 0.6;
                     break;
                 case "USD":
                     rate = 1;
                     break;
+                case "EUR":
+                    rate = 0.65;
+                    break;
                 case "JPY":
-                    rate = 119.22;
+                    rate = 110.22;
+                    break;
+                default:
+                    rate = 1;
                     break;
             }
             break;
         case "JPY":
             switch (document.getElementById('destCurr').value) {
                 case "GBP":
-                    rate = 0.0055;
-                    break;
-                case "EUR":
-                    rate = 0.0074;
+                    rate = 0.0045;
                     break;
                 case "USD":
-                    rate = 0.01;
+                    rate = 0.02;
+                    break;
+                case "EUR":
+                    rate = 0.0070;
                     break;
                 case "JPY":
+                    rate = 1;
+                    break;
+                default:
                     rate = 1;
                     break;
             }
             break;
         default:
-            rate = 2;
+            rate = 1;
     }
     return parseFloat(rate);
 }
@@ -108,7 +124,8 @@ function rateLookup() {
 
 /*Apply a conversion fee to the transaction */
 function conversionFee() {
-    var total = document.getElementById("conVal").textContent;
+    var total;
+    total = document.getElementById("conVal").textContent;
     total = total * 0.94;
     document.getElementById("conVal").textContent = total;
 }
