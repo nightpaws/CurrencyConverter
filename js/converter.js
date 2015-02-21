@@ -12,9 +12,13 @@ function clearOutputScreen() {
 }
 
 function addToScreen(no){
-    if (isNaN(document.getElementById("conVal").textContent)) {
-        clearOutputScreen();
-    }
+  //   if (isNaN(document.getElementById("conVal").textContent)) {
+//         clearOutputScreen();
+//     }
+
+if (document.getElementById("homeCurr").value !== document.getElementById("conCurr").textContent){
+clearOutputScreen();
+}
     if (document.getElementById("conVal").textContent == '0') {
         outbar.textContent = no;
     } else {

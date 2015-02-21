@@ -164,6 +164,19 @@ button:active {
  background-color: lightgray;
 }
 
-select {
- font-size: large;
+.selectStyle select {
+   background: transparent;
+   width: 100%;
+   padding: 4px;
+   font-size: 1em;
+   border: 1px solid #ddd;
+/*    height: 25px; */
+}
+
+.selectStyle {
+   width: 100%;
+/*    height: 25px; */
+   overflow: hidden;
+   background: #ccc;
+   border-radius: 10px;
 }
