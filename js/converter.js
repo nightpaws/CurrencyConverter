@@ -8,6 +8,7 @@ outbar = document.getElementById("conVal");
 /* button functions from On Screen Keypad */
 function clearOutputScreen() {
     document.getElementById("conVal").textContent = '0';
+    updateHomeCurr(document.getElementById('homeCurr').value);
 }
 
 function addToScreen(no){
@@ -27,7 +28,8 @@ function equals() {
     rate = rateLookup();
     total = parseFloat(document.getElementById("conVal").textContent);
     total = total * rate;
-    document.getElementById("conVal").textContent = parseInt(total) + document.getElementById('destCurr').value;
+    document.getElementById("conVal").textContent = parseInt(total);
+    document.getElementById('conCurr').textContent = document.getElementById('destCurr').value;
 }
 
 /*Helper Functions for equals */
@@ -42,7 +44,7 @@ function rateLookup() {
         case "EUR":
             switch (document.getElementById('destCurr').value) {
                 case "GBP":
-                    rate = 0.75;
+                    rate = 0.5;
                     break;
                 case "USD":
                     rate = 1.64;
@@ -58,16 +60,16 @@ function rateLookup() {
                     break;
             }
             break;
-        case "EUR":
+        case "GBP":
             switch (document.getElementById('destCurr').value) {
                 case "GBP":
-                    rate = 0.73;
+                    rate = 1.0;
                     break;
                 case "USD":
                     rate = 1.10;
                     break;
                 case "EUR":
-                    rate = 1;
+                    rate = 1.50;
                     break;
                 case "JPY":
                     rate = 134.20;
@@ -128,4 +130,9 @@ function conversionFee() {
     total = document.getElementById("conVal").textContent;
     total = total * 0.94;
     document.getElementById("conVal").textContent = total;
+}
+
+function updateHomeCurr(curr){
+     document.getElementById('conCurr').textContent = curr;
+
 }

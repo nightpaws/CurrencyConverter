@@ -31,11 +31,11 @@
           <div class="slidecontent">
             <!--Convert From Goes Here-->
             <h1>Select:</h1>
-          <select id="homeCurr">
-			<option value="GBP">GBP</option>
-            <option value="EUR">EUR</option>
-            <option value="USD">USD</option>
-            <option value="JPY">JPY</option>
+          <select onChange="clearOutputScreen()" id="homeCurr">
+			<option  value="GBP">GBP</option>
+            <option  value="EUR">EUR</option>
+            <option  value="USD">USD</option>
+            <option  value="JPY">JPY</option>
           </select>
           </br></br></br>
         </div>
@@ -66,6 +66,7 @@
 <section id="mainsection" class="closedmenu">
   <div id="outputScreen">
     <p id="conVal">0</p>
+    <p id="conCurr">GBP</p>
   </div>
   <table id="conv">
     <tr>
