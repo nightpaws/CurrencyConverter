@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html manifest="converter.appcache">
   <head>
     <title>CurConv</title>
     <meta charset="utf-8"/>
@@ -16,7 +16,7 @@
     <link href="css/converter.css" type="text/css" rel="stylesheet"/>
     
   </head>
-  <body>
+  <body onload="retrieve();">
     <header>
       Currency Converter
     </header>
@@ -38,7 +38,7 @@
             <option  value="USD">USD</option>
             <option  value="JPY">JPY</option>
           </select></div>
-          </br></br></br>
+          </br></br>
         </div>
       </div>
  
@@ -48,13 +48,13 @@
 		  <!--Convert To Goes Here-->
           <h1>Select:</h1>
           <div class="selectStyle">
-          <select id="destCurr">
+          <select onChange="clearOutputScreen()" id="destCurr">
             <option value="EUR">EUR</option>
             <option value="GBP">GBP</option>
 			<option value="USD">USD</option>
             <option value="JPY">JPY</option>
           </select></div>
-          </br></br></br>
+          </br></br>
       </div>
     </div>
   
@@ -64,13 +64,13 @@
 		  <!--Convert To Goes Here-->
           <h1>Select:</h1>
           <div class="selectStyle">
-          <select id="bankCut">
+          <select onChange="updateBankCut()" id="bankCut">
             <option value="0">0%</option>
             <option value="2">2%</option>
 			<option value="4">4%</option>
             <option value="6">6%</option>
           </select></div>
-          </br></br></br>
+          </br></br>
       </div>
     </div>
   

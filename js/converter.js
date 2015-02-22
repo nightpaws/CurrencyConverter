@@ -1,22 +1,48 @@
 /*jslint node: true, browser: true */
 "use strict";
 
+/*Initialisation function on load */
+function retrieve() {
+	var logHome,logDest;
+	if ((localStorage.getItem('savHomeCurr') !==undefined) && (localStorage.getItem('savHomeCurr') !==null)){
+	document.getElementById('homeCurr').value = localStorage.getItem('savHomeCurr');
+	logHome = localStorage.getItem('savHomeCurr');
+	}
+	if ((localStorage.getItem('savDestCurr') !==undefined) && (localStorage.getItem('savDestCurr') !==null)){
+	document.getElementById('destCurr').value = localStorage.getItem('savDestCurr');
+	logDest = localStorage.getItem('savDestCurr');
+	}
+	if ((localStorage.getItem('savBankCut') !==undefined) && (localStorage.getItem('savBankCut') !==null)){
+	document.getElementById('bankCut').value = localStorage.getItem('savBankCut');
+	logDest = localStorage.getItem('savBankCut');
+	}
+	
+	clearOutputScreen();
+	
+	console.log('typeof logHome: ' + typeof logHome);
+	console.log('Value of logHome: ' + logHome);
+	console.log('typeof logDest: ' + typeof logDest);
+	console.log('Value of logDest: ' + logDest);
+	console.log('typeof bankCut: ' + typeof bankCut);
+	console.log('Value of bankCut: ' + bankCut);
+}
+
 /*Converter 'memory' for holding user Input+ output*/
 var outbar;
 outbar = document.getElementById("conVal");
+
+
 
 /* button functions from On Screen Keypad */
 function clearOutputScreen() {
     document.getElementById("conVal").textContent = '0';
     updateHomeCurr(document.getElementById('homeCurr').value);
+    updateDestCurr(document.getElementById('destCurr').value);
+//     updateBankCut(document.getElementById('bankCut').value);
 }
 
 function addToScreen(no){
-  //   if (isNaN(document.getElementById("conVal").textContent)) {
-//         clearOutputScreen();
-//     }
-
-if (document.getElementById("homeCurr").value !== document.getElementById("conCurr").textContent){
+ if (document.getElementById("homeCurr").value !== document.getElementById("conCurr").textContent){
 clearOutputScreen();
 }
     if (document.getElementById("conVal").textContent == '0') {
@@ -144,7 +170,17 @@ function conversionFee(total) {
     return finaltot;
 }
 
-function updateHomeCurr(curr){
+function updateHomeCurr(curr) {
      document.getElementById('conCurr').textContent = curr;
+     localStorage.setItem('savHomeCurr', curr);
 
+}
+
+function updateDestCurr(curr) {
+     localStorage.setItem('savDestCurr', curr);
+}
+
+function updateBankCut() {
+	var cut = document.getElementById('bankCut').value;
+	 localStorage.setItem('savBankCut', cut);
 }
