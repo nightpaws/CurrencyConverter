@@ -4,17 +4,17 @@
 /*Initialisation function on load */
 function retrieve() {
 	var logHome,logDest;
-	if ((localStorage.getItem('savHomeCurr') !==undefined) && (localStorage.getItem('savHomeCurr') !==null)){
-	document.getElementById('homeCurr').value = localStorage.getItem('savHomeCurr');
-	logHome = localStorage.getItem('savHomeCurr');
+	if ((localStorage.getItem('com.craig-morrison.converter.savHomeCurr') !==undefined) && (localStorage.getItem('com.craig-morrison.converter.savHomeCurr') !==null)){
+	document.getElementById('homeCurr').value = localStorage.getItem('com.craig-morrison.converter.savHomeCurr');
+	logHome = localStorage.getItem('com.craig-morrison.converter.savHomeCurr');
 	}
-	if ((localStorage.getItem('savDestCurr') !==undefined) && (localStorage.getItem('savDestCurr') !==null)){
-	document.getElementById('destCurr').value = localStorage.getItem('savDestCurr');
+	if ((localStorage.getItem('com.craig-morrison.converter.savDestCurr') !==undefined) && (localStorage.getItem('com.craig-morrison.converter.savDestCurr') !==null)){
+	document.getElementById('destCurr').value = localStorage.getItem('com.craig-morrison.converter.savDestCurr');
 	logDest = localStorage.getItem('savDestCurr');
 	}
-	if ((localStorage.getItem('savBankCut') !==undefined) && (localStorage.getItem('savBankCut') !==null)){
-	document.getElementById('bankCut').value = localStorage.getItem('savBankCut');
-	logDest = localStorage.getItem('savBankCut');
+	if ((localStorage.getItem('com.craig-morrison.converter.savBankCut') !==undefined) && (localStorage.getItem('com.craig-morrison.converter.savBankCut') !==null)){
+	document.getElementById('bankCut').value = localStorage.getItem('com.craig-morrison.converter.savBankCut');
+	logDest = localStorage.getItem('com.craig-morrison.converter.savBankCut');
 	}
 	
 	clearOutputScreen();
@@ -31,8 +31,6 @@ function retrieve() {
 var outbar;
 outbar = document.getElementById("conVal");
 
-
-
 /* button functions from On Screen Keypad */
 function clearOutputScreen() {
     document.getElementById("conVal").textContent = '0';
@@ -45,115 +43,35 @@ function addToScreen(no){
  if (document.getElementById("homeCurr").value !== document.getElementById("conCurr").textContent){
 clearOutputScreen();
 }
-    if (document.getElementById("conVal").textContent == '0') {
+    if (document.getElementById("conVal").textContent === '0') {
         outbar.textContent = no;
     } else {
         outbar.textContent = outbar.textContent + no;
     }
 }
 
-
 function equals() {
-    var total, rate, conversionTotal;
-    rate = rateLookup();
+    var total, rate, conversionTotal, rateClass = new rates();
+
+    var homeCurr = document.getElementById('homeCurr').value;
+    var awayCurr = document.getElementById('destCurr').value;
+    var cut = document.getElementById('bankCut').value;
     total = parseFloat(document.getElementById("conVal").textContent);
-    total = total * rate;
-    conversionTotal = conversionFee(total);
+
+    if (homeCurr === "EUR") {
+        rate = rateClass.getRate(awayCurr);
+    } else if (awayCurr === "EUR") {
+        rate = 1 / rateClass.getRate(homeCurr);
+    } else {
+        rate = (1 / rateClass.getRate(homeCurr)) * rateClass.getRate(awayCurr);
+    }
+
+	total = total * rate;
+
+    conversionTotal = conversionFee(total); //cut
     document.getElementById("conVal").textContent = parseInt(conversionTotal);
     document.getElementById('conCurr').textContent = document.getElementById('destCurr').value;
 }
-
-/*Helper Functions for equals */
-
-/*Obtain rates from server or hard coded if not ready*/
-
-function rateLookup() {
-    var rate;
-
-    /*Nested Case to handle both selection boxes */
-    switch (document.getElementById('homeCurr').value) {
-        case "EUR":
-            switch (document.getElementById('destCurr').value) {
-                case "GBP":
-                    rate = 0.5;
-                    break;
-                case "USD":
-                    rate = 1.64;
-                    break;
-                case "EUR":
-                    rate = 1.0;
-                    break;
-                case "JPY":
-                    rate = 193.99;
-                    break;
-                default:
-                    rate = 1;
-                    break;
-            }
-            break;
-        case "GBP":
-            switch (document.getElementById('destCurr').value) {
-                case "GBP":
-                    rate = 1.0;
-                    break;
-                case "USD":
-                    rate = 1.10;
-                    break;
-                case "EUR":
-                    rate = 1.50;
-                    break;
-                case "JPY":
-                    rate = 134.20;
-                    break;
-                default:
-                    rate = 1;
-                    break;
-            }
-            break;
-        case "USD":
-            switch (document.getElementById('destCurr').value) {
-                case "GBP":
-                    rate = 0.6;
-                    break;
-                case "USD":
-                    rate = 1;
-                    break;
-                case "EUR":
-                    rate = 0.65;
-                    break;
-                case "JPY":
-                    rate = 110.22;
-                    break;
-                default:
-                    rate = 1;
-                    break;
-            }
-            break;
-        case "JPY":
-            switch (document.getElementById('destCurr').value) {
-                case "GBP":
-                    rate = 0.0045;
-                    break;
-                case "USD":
-                    rate = 0.02;
-                    break;
-                case "EUR":
-                    rate = 0.0070;
-                    break;
-                case "JPY":
-                    rate = 1;
-                    break;
-                default:
-                    rate = 1;
-                    break;
-            }
-            break;
-        default:
-            rate = 1;
-    }
-    return parseFloat(rate);
-}
-
 
 /*Apply a conversion fee to the transaction */
 function conversionFee(total) {
@@ -170,17 +88,19 @@ function conversionFee(total) {
     return finaltot;
 }
 
+/* Update local storage (and display for homecurr)*/
+
 function updateHomeCurr(curr) {
      document.getElementById('conCurr').textContent = curr;
-     localStorage.setItem('savHomeCurr', curr);
+     localStorage.setItem('com.craig-morrison.converter.savHomeCurr', curr);
 
 }
 
 function updateDestCurr(curr) {
-     localStorage.setItem('savDestCurr', curr);
+     localStorage.setItem('com.craig-morrison.converter.savDestCurr', curr);
 }
 
 function updateBankCut() {
 	var cut = document.getElementById('bankCut').value;
-	 localStorage.setItem('savBankCut', cut);
+	 localStorage.setItem('com.craig-morrison.converter.savBankCut', cut);
 }
