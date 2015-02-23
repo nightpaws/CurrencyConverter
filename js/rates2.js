@@ -30,7 +30,7 @@ function rates() {
 
     this.getRate = function(no){
         return rateMap[no];
-    };
+    }
 
 
     if(updateTime + (24*60*60*1000) < Date.now()){
@@ -41,7 +41,7 @@ function rates() {
 
         
         ajax.onreadystatechange=function(){
-            if(ajax.readyState===4 && ajax.status===200){
+            if(ajax.readyState==4 && ajax.status==200){
 
                 updateTime = Date.now();
                 if(localStorage){
@@ -67,7 +67,7 @@ function rates() {
                 var CurrMap = JSON.stringify(rateMap);
                 localStorage.setItem("com.craig-morrison.converter.curs", CurrMap);
  			}
-        };
+        }
 
         ajax.open("GET", "https://devweb2014.cis.strath.ac.uk/~aes02112/ecbxml.php", 
                     true);

@@ -1,191 +1,231 @@
 <!DOCTYPE html>
-<html>
-<!-- manifest="converter.appcache" -->
-  <head>
-    <title>CurConv</title>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-    
-    <link rel="manifest" href="manifest.json">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <link rel="icon" sizes="192x192" href="images/converter.png">
-    <link rel="apple-touch-icon" href="images/converter.png">
-    <link rel="shortcut icon" href="images/converter-0-75x.png" type="image/x-icon">
-    
-    <link href="css/reset.css" type="text/css" rel="stylesheet"/>
-    <link href="css/converter.css" type="text/css" rel="stylesheet"/>
-    
-  </head>
-  <body onload="retrieve();">
-    <header>
-      Currency Converter
-    </header>
-    <nav id="nav">
-      <p id="navmenu">
-        <img src="images/settings.png" alt="Show" width="32" height="32"/>
-      </p>
-      <div id="navelem">
-      
-        <p class="navMenuItem" id="navMenuConvFrom">Convert From</p>
-        <div class="slide" id="slideConvFrom">
-          <div class="slidecontent" >
-            <!--Convert From Goes Here-->
-            <h1>Select:</h1>
-            <div class="selectStyle">
-          <select onChange="clearOutputScreen()" id="homeCurr">
-			<option  value="GBP">GBP</option>
-            <option  value="EUR">EUR</option>
-            <option  value="USD">USD</option>
-            <option  value="JPY">JPY</option>
-          </select></div>
-          </br></br>
-        </div>
-      </div>
- 
-      <p class="navMenuItem" id="navMenuConvTo">Convert To</p>
-      <div class="slide" id="slideConvTo">
-        <div class="slidecontent" >
-		  <!--Convert To Goes Here-->
-          <h1>Select:</h1>
-          <div class="selectStyle">
-          <select onChange="clearOutputScreen()" id="destCurr">
-            <option value="EUR">EUR</option>
-            <option value="GBP">GBP</option>
-			<option value="USD">USD</option>
-            <option value="JPY">JPY</option>
-          </select></div>
-          </br></br>
-      </div>
-    </div>
-  
-      <p class="navMenuItem" id="navMenuBankCut">Bank Cut</p>
-      <div class="slide" id="slideBankCut">
-        <div class="slidecontent" >
-		  <!--Convert To Goes Here-->
-          <h1>Select:</h1>
-          <div class="selectStyle">
-          <select onChange="updateBankCut()" id="bankCut">
-            <option value="0">0%</option>
-            <option value="2">2%</option>
-			<option value="4">4%</option>
-            <option value="6">6%</option>
-          </select></div>
-          </br></br>
-      </div>
-    </div>
-  
-  
-  
-  
-    <p class="navMenuItem" id="navMenuAbout">
-      About
-    </p>
-    
-    
-  </div>
-</nav>
-<section id="mainsection" class="closedmenu">
-  <div id="outputScreen">
-    <p id="conVal">0</p>
-    <p id="conCurr">GBP</p>
-  </div>
-  <table id="conv">
-    <tr>
-      <td>
-        <button onclick="addToScreen(1)">
-          1
-        </button>
-      </td>
-      <td>
-        <button onclick="addToScreen(2)">
-          2
-        </button>
-      </td>
-      <td>
-        <button onclick="addToScreen(3)">
-          3
-        </button>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <button onclick="addToScreen(4)">
-          4
-        </button>
-      </td>
-      <td>
-        <button onclick="addToScreen(5)">
-          5
-        </button>
-      </td>
-      <td>
-        <button onclick="addToScreen(6)">
-          6
-        </button>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <button onclick="addToScreen(7)">
-          7
-        </button>
-      </td>
-      <td>
-        <button onclick="addToScreen(8)">
-          8
-        </button>
-      </td>
-      <td>
-        <button onclick="addToScreen(9)">
-          9
-        </button>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <button onclick="clearOutputScreen()">
-          C
-        </button>
-      </td>
-      <td>
-        <button onclick="addToScreen(0)">
-          0
-        </button>
-      </td>
-      <td>
-        <button onclick="equals()">
-          =
-        </button>
-      </td>
-    </tr>
-  </table>
-</section>
-
-<section class="popup" id="popupAbout">
-  <div class="popupcontent">
-    <p>
-      (C) 2015 University of Strathclyde and Craig Morrison
-    </p>
-    <p>
-      All content is open source and can be used without attribution.
-    </p>
-  </div>
-</section>
-<footer>
-  (C) 2015 UoS / Craig Morrison - v 0.0.1
-</footer>
-<script src="js/rates.js">
-</script>
-<script src="js/view.js">
-</script>
-<script src="js/model.js">
-</script>
-<script src="js/controller.js">
-</script>
-<script src="js/converter.js">
-</script>
-
-<!-- Done. I'm going back to my cave of regular apps now... :( -->
-</body>
+<html manifest="cache.appcache">
+   <head>
+      <title>CurConv</title>
+      <meta charset="utf-8"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+      <link rel="manifest" href="manifest.json">
+      <meta name="mobile-web-app-capable" content="yes">
+      <meta name="apple-mobile-web-app-capable" content="yes">
+      <link rel="icon" sizes="192x192" href="images/converter.png">
+      <link rel="apple-touch-icon" href="images/converter.png">
+      <link rel="shortcut icon" href="images/converter-0-75x.png" type="image/x-icon">
+      <link href="css/reset.css" type="text/css" rel="stylesheet"/>
+      <link href="css/converter.css" type="text/css" rel="stylesheet"/>
+   </head>
+   <body onload="retrieve();">
+      <header>
+         Currency Converter
+      </header>
+      <nav id="nav">
+         <p id="navmenu">
+            <img src="images/settings.png" alt="Show" width="32" height="32"/>
+         </p>
+         <div id="navelem">
+            <p class="navMenuItem" id="navMenuConvFrom">Convert From</p>
+            <div class="slide" id="slideConvFrom">
+               <div class="slidecontent" >
+                  <!--Convert From Goes Here-->
+                  <h1>Select:</h1>
+                  <div class="selectStyle">
+                     <!-- Hardcoded, probably shouldn't be but don't have time -->
+                     <select onChange="clearOutputScreen()" id="homeCurr">
+                        <option  value="GBP">GBP</option>
+                        <option  value="EUR">EUR</option>
+                        <option value="USD">USD</option>
+                        <option value="JPY">JPY</option>
+                        <option value="BGN">BGN</option>
+                        <option value="CZK">CZK</option>
+                        <option value="DKK">DKK</option>
+                        <option value="HUF">HUF</option>
+                        <option value="PLN">PLN</option>
+                        <option value="RON">RON</option>
+                        <option value="SEK">SEK</option>
+                        <option value="CHF">CHF</option>
+                        <option value="NOK">NOK</option>
+                        <option value="HRK">HRK</option>
+                        <option value="RUB">RUB</option>
+                        <option value="TRY">TRY</option>
+                        <option value="AUD">AUD</option>
+                        <option value="BRL">BRL</option>
+                        <option value="CAD">CAD</option>
+                        <option value="CNY">CNY</option>
+                        <option value="HKD">HKD</option>
+                        <option value="IDR">IDR</option>
+                        <option value="ILS">ILS</option>
+                        <option value="INR">INR</option>
+                        <option value="KRW">KRW</option>
+                        <option value="MXN">MXN</option>
+                        <option value="MYR">MYR</option>
+                        <option value="NZD">NZD</option>
+                        <option value="PHP">PHP</option>
+                        <option value="SGD">SGD</option>
+                        <option value="THB">THB</option>
+                        <option value="ZAR">ZAR</option>
+                     </select>
+                  </div>
+                  </br></br>
+               </div>
+            </div>
+            <p class="navMenuItem" id="navMenuConvTo">Convert To</p>
+            <div class="slide" id="slideConvTo">
+               <div class="slidecontent" >
+                  <!--Convert To Goes Here-->
+                  <h1>Select:</h1>
+                  <div class="selectStyle">
+                     <select onChange="clearOutputScreen()" id="destCurr">
+                        <option value="EUR">EUR</option>
+                        <option value="GBP">GBP</option>
+                        <option value="USD">USD</option>
+                        <option value="JPY">JPY</option>
+                        <option value="BGN">BGN</option>
+                        <option value="CZK">CZK</option>
+                        <option value="DKK">DKK</option>
+                        <option value="HUF">HUF</option>
+                        <option value="PLN">PLN</option>
+                        <option value="RON">RON</option>
+                        <option value="SEK">SEK</option>
+                        <option value="CHF">CHF</option>
+                        <option value="NOK">NOK</option>
+                        <option value="HRK">HRK</option>
+                        <option value="RUB">RUB</option>
+                        <option value="TRY">TRY</option>
+                        <option value="AUD">AUD</option>
+                        <option value="BRL">BRL</option>
+                        <option value="CAD">CAD</option>
+                        <option value="CNY">CNY</option>
+                        <option value="HKD">HKD</option>
+                        <option value="IDR">IDR</option>
+                        <option value="ILS">ILS</option>
+                        <option value="INR">INR</option>
+                        <option value="KRW">KRW</option>
+                        <option value="MXN">MXN</option>
+                        <option value="MYR">MYR</option>
+                        <option value="NZD">NZD</option>
+                        <option value="PHP">PHP</option>
+                        <option value="SGD">SGD</option>
+                        <option value="THB">THB</option>
+                        <option value="ZAR">ZAR</option>
+                     </select>
+                  </div>
+                  </br></br>
+               </div>
+            </div>
+            <p class="navMenuItem" id="navMenuBankCut">Bank Cut</p>
+            <div class="slide" id="slideBankCut">
+               <div class="slidecontent" >
+                  <!--Convert To Goes Here-->
+                  <h1>Select:</h1>
+                  <div class="selectStyle">
+                     <select onChange="updateBankCut()" id="bankCut">
+                        <option value="0">0%</option>
+                        <option value="2">2%</option>
+                        <option value="4">4%</option>
+                        <option value="6">6%</option>
+                     </select>
+                  </div>
+                  </br></br>
+               </div>
+            </div>
+            <p class="navMenuItem" id="navMenuAbout">
+               About
+            </p>
+         </div>
+      </nav>
+      <section id="mainsection" class="closedmenu">
+         <div id="outputScreen">
+            <p id="conVal">0</p>
+            <p id="conCurr">GBP</p>
+         </div>
+         <table id="conv">
+            <tr>
+               <td>
+                  <button onclick="addToScreen(1)">
+                  1
+                  </button>
+               </td>
+               <td>
+                  <button onclick="addToScreen(2)">
+                  2
+                  </button>
+               </td>
+               <td>
+                  <button onclick="addToScreen(3)">
+                  3
+                  </button>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <button onclick="addToScreen(4)">
+                  4
+                  </button>
+               </td>
+               <td>
+                  <button onclick="addToScreen(5)">
+                  5
+                  </button>
+               </td>
+               <td>
+                  <button onclick="addToScreen(6)">
+                  6
+                  </button>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <button onclick="addToScreen(7)">
+                  7
+                  </button>
+               </td>
+               <td>
+                  <button onclick="addToScreen(8)">
+                  8
+                  </button>
+               </td>
+               <td>
+                  <button onclick="addToScreen(9)">
+                  9
+                  </button>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <button onclick="clearOutputScreen()">
+                  C
+                  </button>
+               </td>
+               <td>
+                  <button onclick="addToScreen(0)">
+                  0
+                  </button>
+               </td>
+               <td>
+                  <button onclick="equals()">
+                  =
+                  </button>
+               </td>
+            </tr>
+         </table>
+      </section>
+      <section class="popup" id="popupAbout">
+         <div class="popupcontent">
+            <p>
+               (C) 2015 University of Strathclyde and Craig Morrison
+            </p>
+            <p>
+               This is a university assignment. Code used within is either original or used from given code on MyPlace.
+            </p>
+         </div>
+      </section>
+      <footer>
+         (C) 2015 UoS / Craig Morrison - v 1.2.0
+      </footer>
+      <script src="js/rates.js"></script>
+      <script src="js/view.js"></script>
+      <script src="js/model.js"></script>
+      <script src="js/controller.js"></script>
+      <script src="js/converter.js"></script>
+      <!-- Done. I'm going back to my cave of regular apps now... :( -->
+   </body>
 </html>
