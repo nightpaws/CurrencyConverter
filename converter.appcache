@@ -1,0 +1,15 @@
+CACHE MANIFEST
+# 2015-02-22 v1.2.2
+./css/reset.css
+./css/converter.css
+./js/controller.js
+./js/model.js
+./js/view.js
+./js/converter.js
+./js/rates.js
+./images/settings.png
+./index.html
+
+NETWORK:
+
+FALLBACK:

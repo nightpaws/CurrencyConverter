@@ -1,7 +1,8 @@
 * {
     margin: 0;
 
-}
+}  
+  
 html, body {
     height: 100%;
     font-family: sans-serif;
@@ -19,19 +20,25 @@ html, body {
     margin-bottom: 0.5rem;
 }
 
+#mainsection {
+	text-align: center;
+}
+
 header {
-    background-color:black;
+    background-color:steelblue;
     color:white;
     text-align:center;
     padding:0.2em; 
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     height: 1.3rem;
 }
+
 nav {
-    background-color:#eeeeee;
+	background-color:powderblue;
     padding: 0.3rem;
     width:20%;
     float:left;
+    text-align: center;
     font-size: 0.8rem;
     height: calc(100% - 3.5rem);
 }
@@ -43,12 +50,10 @@ section.closedmenu{
 }
 p.navMenuItem{
     margin: 0.2rem;
-    /*font-size: 1rem;*/
-    padding: 0.5rem;
-    background: silver;
-    /*font-weight: bold;*/
+    padding: 0.3rem;
+    background: azure;
     text-align: center;
-    /*cursor: pointer;*/
+    border-radius: 1em;
 }
 section{
     margin-left: calc(20% + 10px);
@@ -56,7 +61,7 @@ section{
     font-size: 0.8rem;
     min-height: calc(100% - 3.5rem);
     height: calc(100% - 3.5rem);
-    background: lightyellow;
+    background: azure;
     overflow:auto;
 }
 section.popup {
@@ -83,7 +88,7 @@ section.popup {
     overflow: hidden;
 }
 footer {
-    background-color:black;
+    background-color:steelblue;
     color:white;
     clear:both;
     text-align:center;
@@ -97,34 +102,76 @@ footer {
 
 #outputScreen {
     width: 100%;
-    height: 20%;
-    background-color: gray;
+    height: 18%;
+    background-color: lightgray;
     display: table;
     text-align: right;
     font-weight: bolder;
     font-size: xx-large;
     margin-bottom: 5px;
+    border: 3px solid white;
 }
 
 #outputScreen p{
+    width: 80%;
     display: table-cell;
     vertical-align: bottom;
     padding-right: 10px;
 }
 
-button{
-    text-align: center;
-    width: 100%;
-    height: 100%;
-    color: white;
-    background-color: darkgray;
-    font-size: xx-large;
-    font-weight: bold;
-}
+#outputScreen #conCurr {
+	width: 20%;
+	font-size: large;
+ }
 
-table{
+#conv {
     width: 100%;
     height: 80%;
-    border: 0px;
+
 }
 
+#conv td {
+	width: 25%;
+}
+
+button {
+    text-align: center;
+    width: 95%;
+    height: 95%;
+    color: white;
+    background-color: darkgray;
+    border: 3px solid white;
+    box-shadow: silver 0.2em 0.2em 0.1em;
+    font-size: xx-large;
+    font-weight: bold;
+    border-radius: 100%;
+	
+}
+
+button:focus {
+outline: 0;
+}
+
+button::-moz-focus-inner {
+outline: 0;
+}
+
+button:active {
+ color: gray;
+ background-color: lightgray;
+}
+
+.selectStyle select {
+   background: transparent;
+   width: 100%;
+   padding: 4px;
+   font-size: 1em;
+   border: 0.1em solid #ddd;
+}
+
+.selectStyle {
+   width: 100%;
+   overflow: hidden;
+   background: #ccc;
+   border-radius: 10px;
+}

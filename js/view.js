@@ -48,55 +48,56 @@ function My317View() {
                 if (openNav) {
                     openCloseNav();
                 }
-            },
-            showConvFrom = function() {
-                //handle showing about box purely within the view as their's no model involved
-                document.getElementById("popupConvFrom").style.display = "block";
-                history.pushState(null, null, "#ConvFrom");
-            },
-            hideConvFrom = function() {
-                //handle hiding about box purely within the view
-                document.getElementById("popupConvFrom").style.display = "none";
-                if (openNav) {
-                    openCloseNav();
-                }
-            },
-            showConvTo = function() {
-                //handle showing about box purely within the view as their's no model involved
-                document.getElementById("popupConvTo").style.display = "block";
-                history.pushState(null, null, "#ConvTo");
-            },
-            hideConvTo = function() {
-                //handle hiding about box purely within the view
-                document.getElementById("popupConvTo").style.display = "none";
-                if (openNav) {
-                    openCloseNav();
-                }
-            };
+                };
+//             },
+           //  showConvFrom = function() {
+//                 //handle showing about box purely within the view as their's no model involved
+//                 document.getElementById("slideConvFrom").style.display = "block";
+//                 history.pushState(null, null, "#ConvFrom");
+//             },
+//             hideConvFrom = function() {
+//                 //handle hiding about box purely within the view
+//                 document.getElementById("slideConvFrom").style.display = "none";
+//                 if (openNav) {
+//                     openCloseNav();
+//                 }
+//             },
+            // showConvTo = function() {
+//                 //handle showing about box purely within the view as their's no model involved
+//                 document.getElementById("slideConvTo").style.display = "block";
+//                 history.pushState(null, null, "#ConvTo");
+//             },
+  //           hideConvTo = function() {
+//                 //handle hiding about box purely within the view
+//                 document.getElementById("slideConvTo").style.display = "none";
+//                 if (openNav) {
+//                     openCloseNav();
+//                 }
+//             };
 
     this.init = function() {
         openCloseNav();
         addMouseAndTouchUp("navmenu", openCloseNav);
         addMouseAndTouchUp("navMenuAbout", showAbout);
-        addMouseAndTouchUp("navMenuConvFrom", showConvFrom);
-        addMouseAndTouchUp("navMenuConvTo", showConvTo);
+//         addMouseAndTouchUp("navMenuConvFrom", showConvFrom);
+//         addMouseAndTouchUp("navMenuConvTo", showConvTo);
 
         //handle closing of about window using history 
         //so that back buttons work (esp important on Android for hard back key
         addMouseAndTouchUp("popupAbout", function() {
             window.history.back();
         });
-        addMouseAndTouchUp("popupConvFrom", function() {
-            window.history.back();
-        });
-        addMouseAndTouchUp("popupConvTo", function() {
-            window.history.back();
-        });
+       //  addMouseAndTouchUp("popupConvFrom", function() {
+//             window.history.back();
+//         });
+//         addMouseAndTouchUp("popupConvTo", function() {
+//             window.history.back();
+//         });
 
         window.addEventListener("popstate", function() {
             hideAbout();
-            hideConvFrom();
-            hideConvTo();
+//             hideConvFrom();
+//             hideConvTo();
         });
     };
 }
